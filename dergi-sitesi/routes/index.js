@@ -6,10 +6,27 @@ const Kategorilertab = require('../models/Kategorilertab');
 const verifyToken = require('../utility/verifyToken');
 const nodemailer = require('nodemailer');
 const Duyurular = require('../models/Duyurular');
+const Etkinlikler = require('../models/Etkinlikler');
 // Ana sayfa
 router.get('/hakkimizda', (req, res) =>{
     const notif = ''
     res.render('hakkimizda', { userS: req.session.user });
+});
+
+let aforizma= [
+];
+
+router.get('/index', (req, res) => {
+  res.render('index', { aforizma: aforizma });
+});
+
+router.post('/aforizma', (req, res) => {
+  const yeniAforizma = {
+      kullanici: req.session.user, // Burada kullanıcının adını dinamik olarak alabilirsiniz
+      metin: req.body.aforizma
+  };
+  aforizma.push(yeniAforizma);
+  res.redirect('/index');
 });
 
 const transporter = nodemailer.createTransport({
@@ -25,6 +42,30 @@ router.get('/iletisim', (req, res) =>{
     const notif = ''
     res.render('iletisim', { userS: req.session.user });
 });
+
+router.get('/eserYolla', (req, res) =>{
+  const notif = ''
+  res.render('eserYolla', { userS: req.session.user });
+});
+
+router.get('/etkinlikler', async (req, res) =>{
+  const notif = ''
+    try {
+        const etkinlikler = await Etkinlikler.findAll(); // Tüm etkinlikleri çekin
+        console.log(etkinlikler);
+        res.render('etkinlikler', { userS: req.session.user, etkinlikler }); // etkinlikler.ejs şablonuna etkinlikleri gönderin
+    } catch (error) {
+        console.error('Etkinlikleri çekerken bir hata oluştu:', error);
+        res.render('error', { error });
+    }
+});
+
+
+router.get('/kunye', (req, res) =>{
+  const notif = ''
+  res.render('kunye', { userS: req.session.user });
+});
+
 
 router.post('/contact', (req, res) => {
   const { name, email, message } = req.body;

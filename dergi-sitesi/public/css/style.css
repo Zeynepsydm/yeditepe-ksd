@@ -1,4 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+.sub-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Yatayda ortalar */
+  }
+  
+  .sub-menu iframe {
+    max-width: 100%; 
+    min-width:80%; /* Minimum genişlik belirleyin */
+    height: auto;
+    aspect-ratio: 16/9; /* 16:9 oranını korur */
+    
+  }
+  
+.aforizma{
+    width: 84%;
+    display: inline;
+    height: 18px;
+}
+.aforizma-container {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-y: hidden;
+    border: none;
+    padding: 10px;
+}
+.aforizma {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.icon{
+    margin-bottom: 30px;
+}
+
+textarea {
+  
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    overflow: hidden;
+    min-height: 18px;
+    box-sizing: border-box;
+    line-height: 1.5; /* Bu, metin satırlarının yüksekliğini ayarlar */
+}
+
 input{
     background-color: #F7FAFC;
     color: black;
@@ -134,6 +182,25 @@ body {
     display: block;
 }
 
+.mainpage{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.dergi-card-panel {
+    flex: 0 0 auto;
+    width: 75%;
+    margin-left:20px;
+    
+}
+
+.aforizma-card-panel {
+    /* flex: 0 0 auto; */
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
 .custom-container{
     margin-top: 32px;
     display: flex;
@@ -149,11 +216,13 @@ body {
 /* Kart stilleri */
 .custom-card-container {
     display: flex; /* Kartları dikey hizala */
-    align-items: start;
+    align-items: center;
     justify-content: flex-start;
-    padding: 0px;
+    padding: 50px;
+    padding-right: 40px;
     margin: 0px; 
     width: 100%;
+    flex-wrap: wrap;
 
 }
 
@@ -504,7 +573,7 @@ a{
 
 
 .custom-row{
-    width: 80%;
+    width: 90%;
     background-color: #ffffff;
     border-radius: 1rem;
     box-shadow: #E2E8F0 0px 0px 5px 0px, #E2E8F0 0px 0px 1px 0px;
@@ -621,6 +690,8 @@ padding: 12px;
     box-sizing: border-box;
     margin-bottom: 15px;
 }
+
+
 
 .custom-btn {
     display: inline-block;
@@ -1019,9 +1090,9 @@ a{
   width: 100%;
   display: flex;
   align-items: center;
-  margin-left: 12px;
+  margin-left: 20px; /*12px*/
   padding: 12px;
-  margin-top: 40px;
+  margin-top: 30px; /*40px*/
 }
 .sidebar .logo-details i{
   font-size: 30px;
@@ -1228,6 +1299,7 @@ a{
   height: 60px;
   display: flex;
   align-items: center;
+  float: left;
 }
 .home-section .home-content .bx-menu,
 .home-section .home-content .text{
@@ -1637,7 +1709,6 @@ a {
     .col-md-6 {
         width: 100%; /* Tam genişlik */
     }
-
     .detail-info {
         margin-top: 20px; /* Boşluk ekleyerek resim ile detay bilgileri arasına mesafe koy */
         width: 99%;
@@ -1764,4 +1835,6 @@ a {
     h2{
         display: inline-block;
     }
+
+    
 }

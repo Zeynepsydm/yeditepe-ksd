@@ -1,0 +1,74 @@
+<%- include('./partials/header.ejs',) %>
+<%- include('./partials/loader.ejs') %>
+<div class="container">
+    <section class="about-us">
+        <h2>Eser Gönderme Kuralları
+        </h2>
+        <ol>
+            <li>Yeditepe Kültür ve Sanat Dergisi Edebiyat alanlarında üretilen eserlerin yayınlandığı kolektif bir oluşumdur.
+            </li>
+            <li>Yeditepe Kültür ve Sanat Dergisinde yayınlanacak eserlerin kesinlikle yazarların kendisine ait olması gerekmektedir. Başkasına ait yazılar ve görseller ancak eser sahibinin izni alınarak yayınlanabilir.
+            </li>
+            <li>İsteyen herkes Yeditepe Kültür ve Sanat Dergisine eser gönderebilir. Ama gönderilecek bütün eserler, yazı ekibinin değerlendirmesinden geçtikten sonra yayınlanır.
+            </li>
+            <li>Yeditepe Kültür ve Sanat Dergisi, kolektif ve kâr amacı gütmeyen bir dergi olduğu için telif ödeyememektedir. Ama telif haklarına saygısını, eser sahiplerinin teliflerini yukarıda belirtilen maddelerle koruyarak yerine getirmeyi amaçlamaktadır.
+            </li>
+            <li>Gönderilen eserlerde Fikir ve Sanat Eserleri Kanunu 5846’da suç teşkil eden bir unsurun bulunmasından tamamen eserin sahibi sorumludur. Yeditepe Kültür ve Sanat Dergisi sadece hukuki sorumluluğun eser sahibine ait olduğunu bildirmekle yükümlüdür.
+            </li>
+            <li>Gönderilen eserlerde azami Türkçe yeterlilik ve yazım kurallarına azami dikkat aranır, Yeditepe Kültür ve Sanat Dergisinin internette yayınlanan bir dergi olması bu kuralı değiştirmez. 
+            </li>
+            <li>Yeditepe Kültür ve Sanat Dergisine gönderilen ve yayınlanan eserler, esas olarak hukuki engeller haricinde kaldırılmaz. Ama eser sahibinin geçerli bir gerekçesi olması durumunda, Yeditepe Kültür ve Sanat Dergisi yayın ekibinin ortak kararıyla kaldırılabilir.</li>
+            <li>Yeditepe Kültür ve Sanat Dergisine yazı gönderen herkes bu maddeleri peşinen kabul etmiş sayılır. Daha sonra yapılacak itirazlar kabul edilmeyecektir.</li>
+            <li><b> Yeditepe Kültür ve Sanat Dergisine eserlerinizi yeditepekulturvesanat@gmail.com   adresine veya aşağıda bulunan metin kutusuna emailinizi yazarak gönderebilirsiniz.  Emailleriniz gizlilik ilkeleri uyarınca saklı tutulacaktır.  </b>
+            </li>
+        </ol>
+        <p>Yeditepe Kültür ve Sanat Dergisi Ekibi
+        </p>
+        <form action="/submitEser" method="POST">
+            <div class="form-group">
+                <label for="name">Ad/Soyad:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Kategori Seçiniz:</label>
+                <select id="category" name="category" class="form-control" aria-placeholder="Kategori Seçiniz"> 
+                    <option value="şiir">Şiir</option>
+                    <option value="nesir">Nesir</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="title">Eserinize uygun telif hakkı olmayan bir resim  ekleyiniz:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Eserinizi buraya yazınız. Emailiniz gizlilik ilkeleri gereğince saklı tutulacaktır.</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </section>
+
+    <div class="social-media">
+        <h2>Bizi Takip Edin</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/yeditepe.kultur.sanat" target="_blank" rel="">
+                <i class="fa-brands fa-instagram"></i><span>yeditepekultursanat</span>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61556218620082&mibextid=ZbWKwL" target="_blank" rel="">
+                <i class="fa-brands fa-facebook"></i><span> yeditepekultursanat</span>
+            </a>
+            <!-- Diğ
+            <!-- Diğer sosyal medya ikonları ekleyebilirsiniz -->
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer.ejs') %>

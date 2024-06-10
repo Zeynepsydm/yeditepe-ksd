@@ -7,7 +7,7 @@ require('dotenv').config();
 //   host: process.env.DB_HOST ,
 //   dialect:'mysql' /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
 // });
-const sequelize = new Sequelize( 'ykvs_books', 'root', 'XLIE4244hGW-TV', {
+const sequelize = new Sequelize( 'ykvs_books', 'root', 'root', {
   host:'localhost',
   dialect:'mysql' /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
 });

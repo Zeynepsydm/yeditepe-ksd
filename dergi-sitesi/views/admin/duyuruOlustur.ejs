@@ -30,7 +30,7 @@
         <h1>Aktif Duyuru</h1>
         <% duyurular.forEach(duyuru=>{%>
         <div style="width: 80%;" class="announcement-panel">
-            <h2 style="color: <%= duyuru.duyuru_renk%>" class="announcement-title"><%= duyuru.duyuru_baslik %></h2>
+            <h2 style="color: <%= duyuru.duyuru_renk %>" class="announcement-title"><%= duyuru.duyuru_baslik %></h2>
             <p class="announcement-description"><%= duyuru.duyuru_metin %></p>
         </div>
         <% }); %>

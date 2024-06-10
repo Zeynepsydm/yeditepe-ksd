@@ -14,6 +14,7 @@ const verifyToken = require('../utility/verifyToken');
 const Kategorilertab = require('../models/Kategorilertab');
 const Duyurular = require('../models/Duyurular');
 const logger = require('../utility/logger');
+const Etkinlikler = require('../models/Etkinlikler');
 const options = { timeZone: 'Europe/Istanbul' }; // Türkiye saat dilimi
 const formattedDate = new Date();
 const now = formattedDate.toLocaleString('tr-TR', options);
@@ -30,6 +31,72 @@ router.get('/panel', verifyToken, (req, res) => {
     // Kullanıcı admin rolüne sahipse, sayfayı render et
     res.render('admin/kontrolPanel', { userS });
 });
+
+// Admin sayfası (POST)
+router.post('/etkinlikEkle', async (req, res) => {
+    const userS = req.session.user;
+    const { videoLink  } = req.body;
+    if (userS && userS.role === 'admin') {
+        try {
+            const etklinlikTemizle = await Etkinlikler.destroy({
+                truncate: true
+            });
+
+            const etkinlikOlustur = await Etkinlikler.create({
+                etkinlikler_link: videoLink 
+            });
+
+            const ipAddress = req.socket.remoteAddress;
+            logger.info(userS.username + ' ' + 'Etkinlik Oluşturdu: ' + ipAddress + '  //' + new Date());
+
+            res.redirect('/admin/etkinlikOlustur?success=true');
+        } catch (error) {
+            console.error('Etkinlik oluşturulamadı:', error);
+            res.status(500).send('Etkinlik oluşturulamadı');
+        }
+    } else {
+        res.redirect('/');
+    }
+  });
+  
+  router.post('/etklinlikTemizle', verifyToken, async (req, res) => {
+    const userS = req.session.user;
+
+    if (!(userS && userS.role === 'admin')) {
+        return res.redirect('/');
+    }
+
+    try {
+        await Etkinlikler.destroy({
+            truncate: true
+        });
+
+        const ipAddress = req.socket.remoteAddress;
+        logger.info(userS.username + ' ' + 'Etkinlik Sildi: ' + ipAddress + '  //' + now);
+        res.redirect('/admin/etkinlikOlustur');
+    } catch (error) {
+        console.error('Etkinlik silinirken bir hata oluştu: ' + error);
+        // Hata durumunu uygun şekilde ele alabilirsiniz, örneğin 500 durum kodu ile hata sayfası render edebilirsiniz.
+        return res.status(500).send('Internal Server Error');
+    }
+});
+
+// Etkinlikler Olustur sayfası
+router.get('/etkinlikOlustur', async (req, res) => {
+    const userS = req.session.user;
+
+    if (!(userS && userS.role === 'admin')) {
+        return res.render('404', { userS });
+    }
+    const success = req.query.success === 'true';
+    const etkinlik = await Etkinlikler.findOne(); // Son eklenen etkinliği çek
+
+    // Kullanıcı admin rolüne sahipse, sayfayı render et
+    res.render('admin/etkinlikOlustur', { userS, etkinlik,success });
+});
+
+
+
 
 router.get('/logizleme', verifyToken,(req, res)=>{
     const userS = req.session.user;

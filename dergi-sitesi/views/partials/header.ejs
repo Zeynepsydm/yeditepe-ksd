@@ -20,7 +20,7 @@
     
     <nav id="navbar" class="navbar">
         <a href="/" class="logo">
-            <img src="/images/newLogoWhiteColorTransparent.png" class="hide-bg" alt="LOGO" height="95" width="98">
+            <img src="/images/YeditepeKulturSanatTransparent.png" class="hide-bg" alt="LOGO" height="100" width="100">
         </a>
         <input type="checkbox" id="toggler">
         <label for="toggler"><i class="fa fa-bars"></i></label>
@@ -30,6 +30,9 @@
                     <!-- Kullanıcı giriş yapmışsa -->
                     <li class="navbar"><a href="/">Anasayfa</a></li>
                     <li class="navbar"><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li class="navbar"><a href="/kunye">Künye</a></li>
+                    <li class="navbar"><a href="/etkinlikler">Etkinlikler</a></li>
+                    <li class="navbar"><a href="/eserYolla">Eser Gönder</a></li>
                     <li class="navbar"><a href="/iletisim">İletişim</a></li>
                     <% if(userS && userS.role==='admin'){ %>
                         <!-- Kullanıcı yöneticiyse -->
@@ -52,6 +55,9 @@
                     <!-- Kullanıcı giriş yapmamışsa -->
                     <li class="navbar"><a href="/">Anasayfa</a></li>
                     <li class="navbar"><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li class="navbar"><a href="/kunye">Künye</a></li>
+                    <li class="navbar"><a href="/etkinlikler">Etkinlikler</a></li>
+                    <li class="navbar"><a href="/eserYolla">Eser Gönder</a></li>
                     <li class="navbar"><a href="/iletisim">İletişim</a></li>
                     <li class="navbar navbar-link">
                         <a class="item" href="/auth/giris">Giriş Yap</a>

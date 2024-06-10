@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs') %>
+<div class="custom-category-container">
+    <div style="width: auto;" class="custom-category-panel">
+        <div class="category-create-panel">
+            <h2 class="text-center mb-4">Etkinlik Oluştur</h2>
+            <form action="/admin/etkinlikEkle" method="POST">
+                <p>Etkinlikler Kullanıcılara sadece etkinlikler kısmında gösterilir. </p>
+                <div class="form-group">
+                    <label for="videoLink">Video Linki:</label>
+                    <textarea class="form-control admin-panel-textarea" id="videoLink" name="videoLink" required></textarea>
+                </div>
+                <button type="submit" class="btn addbookbtn btn-primary">Etkinliği oluştur</button>
+            </form>
+        </div>
+        <form action="/admin/etklinlikTemizle" method="POST">
+            <button class="btn btn-danger">Etkinlik Sil</button>
+        </form>
+        <a href="/admin/panel"><button class="btn btn-secondary">Geri</button></a>
+
+        <% if (success) { %>
+            <h2>Yeni etkinlik oluşturuldu!</h2>
+        <% } %>
+
+        <% if (etkinlik) { %>
+            <h2>Aktif Etkinlik</h2>
+            <div>
+                <p>Video Linki: <%= etkinlik.etkinlikler_link %></p>
+            </div>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
